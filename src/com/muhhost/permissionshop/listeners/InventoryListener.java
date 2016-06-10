@@ -8,11 +8,9 @@ public class InventoryListener implements Listener{
 
 
     @EventHandler
-    public void onClick(InventoryClickEvent click)
+    public void onInventoryClick(InventoryClickEvent click)
     {
-        System.out.println("Hello using event");
-        System.out.print(click.getSlot());
-        click.setCancelled(true);
+
     }
 
 

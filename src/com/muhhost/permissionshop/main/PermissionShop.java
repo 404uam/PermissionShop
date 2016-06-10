@@ -12,6 +12,8 @@ public class PermissionShop extends JavaPlugin {
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new InventoryListener(),this);
         this.getCommand("shop").setExecutor(new ShopCommand());
+        addDefaultConfig();
+
     }
 
     public void onDisable() {
@@ -28,6 +30,14 @@ public class PermissionShop extends JavaPlugin {
 
     public FileConfiguration getConfig() {
         return config;
+    }
+
+
+    private void addDefaultConfig()
+    {
+
+
+
     }
 
 
