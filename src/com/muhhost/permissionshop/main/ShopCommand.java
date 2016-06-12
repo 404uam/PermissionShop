@@ -35,22 +35,25 @@ import org.bukkit.inventory.meta.ItemMeta;
     private void openGUI(Player player)
     {
         Inventory shop = Bukkit.createInventory(player,36,config.getString("inventoryName"));
+        int i = 0;
 
-
-        if((Material.matchMaterial(config.getString("categories.0.material")) == null))
+        while(config.get("categories." + i) != null)
         {
-            System.out.println("No such material");
-        }
-        else
-        {
-            ItemStack temp = new ItemStack(Material.matchMaterial(config.getString("categories.0.material")));
-            ItemMeta tempMeta = temp.getItemMeta();
-            tempMeta.setDisplayName(config.getString("categories.0.name"));
-            temp.setItemMeta(tempMeta);
+            if((Material.matchMaterial(config.getString("categories." + i + ".material")) == null))
+            {
+                System.out.println("No such material");
+            }
+            else{
 
-            shop.setItem(config.getInt("categories.0.position"),temp);
-        }
+                ItemStack temp = new ItemStack(Material.matchMaterial(config.getString("categories." + i + ".material")));
+                ItemMeta tempMeta = temp.getItemMeta();
+                tempMeta.setDisplayName(config.getString("categories." + i + ".name"));
+                temp.setItemMeta(tempMeta);
 
+                shop.setItem(config.getInt("categories."+i+".position"),temp);
+            }
+            i++;
+        }
         player.openInventory(shop);
 
     }
