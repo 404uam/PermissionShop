@@ -11,6 +11,8 @@ public class InventoryListener implements Listener{
     public void onInventoryClick(InventoryClickEvent click)
     {
         click.setCancelled(true);
+
+        click.getCurrentItem().getItemMeta().getDisplayName();
     }
 
 

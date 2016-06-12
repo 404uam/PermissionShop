@@ -4,10 +4,14 @@ import com.muhhost.permissionshop.listeners.InventoryListener;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+
 public class PermissionShop extends JavaPlugin {
 
     private static PermissionShop instance ;
     private FileConfiguration config = super.getConfig();
+    private ArrayList categories;
+
 
     public void onEnable() {
         saveDefaultConfig();

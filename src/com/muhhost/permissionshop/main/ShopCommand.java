@@ -16,6 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
     private PermissionShop pShop = PermissionShop.getInstance();
     private FileConfiguration config = pShop.getConfig();
+    private Inventory shop;
 
     public boolean onCommand(CommandSender sender, Command command, String lbl, String[] args) {
 
@@ -32,9 +33,12 @@ import org.bukkit.inventory.meta.ItemMeta;
         return true;
     }
 
+    public Inventory getShop()
+    {return shop;}
+
     private void openGUI(Player player)
     {
-        Inventory shop = Bukkit.createInventory(player,36,config.getString("inventoryName"));
+        shop = Bukkit.createInventory(player,36,config.getString("inventoryName"));
         int i = 0;
 
         while(config.get("categories." + i) != null)
@@ -55,6 +59,5 @@ import org.bukkit.inventory.meta.ItemMeta;
             i++;
         }
         player.openInventory(shop);
-
     }
 }
