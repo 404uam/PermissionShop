@@ -1,0 +1,14 @@
+##########################
+# Permission Shop Config #
+#           By           #
+#         SirTak         #
+##########################
+
+#Name of the shop opened
+inventoryName: "Permission Shop"
+
+#Prefix for messages in game.
+prefix: "[&6Permission Shop&f]"
+
+#Whether or not the inventory closes when an item is purchased
+closeInventoryAferPurchase: false
