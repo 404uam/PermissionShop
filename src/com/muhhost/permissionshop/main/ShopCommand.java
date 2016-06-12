@@ -12,7 +12,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-    class ShopCommand implements CommandExecutor {
+    public class ShopCommand implements CommandExecutor {
 
     private PermissionShop pShop = PermissionShop.getInstance();
     private FileConfiguration config = pShop.getConfig();

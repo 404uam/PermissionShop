@@ -20,7 +20,7 @@ public class PermissionShop extends JavaPlugin {
 
     }
 
-    static PermissionShop getInstance() {
+    public static PermissionShop getInstance() {
         if (instance == null) {
             instance = new PermissionShop();
         }
