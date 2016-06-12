@@ -10,7 +10,7 @@ public class InventoryListener implements Listener{
     @EventHandler
     public void onInventoryClick(InventoryClickEvent click)
     {
-
+        click.setCancelled(true);
     }
 
 

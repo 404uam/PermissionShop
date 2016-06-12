@@ -12,3 +12,24 @@ prefix: "[&6Permission Shop&f]"
 
 #Whether or not the inventory closes when an item is purchased
 closeInventoryAferPurchase: false
+
+
+######################################### Main categories ########################################
+categories:
+  0:
+    position: 0
+    material: WEB
+    shop: trails
+    name: Trails
+
+
+############################################ Shops ###############################################
+trails:
+  0:
+    position: 0
+    material: SAND
+    price:  10
+    command:
+      - say Hello
+
+

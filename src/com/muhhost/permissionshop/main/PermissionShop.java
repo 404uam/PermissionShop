@@ -6,11 +6,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class PermissionShop extends JavaPlugin {
 
-    private static PermissionShop instance = null;
+    private static PermissionShop instance ;
     private FileConfiguration config = super.getConfig();
 
     public void onEnable() {
-        instance = getInstance();
+        saveDefaultConfig();
+        instance = this;
         getServer().getPluginManager().registerEvents(new InventoryListener(),this);
         this.getCommand("shop").setExecutor(new ShopCommand());
     }
@@ -19,7 +20,7 @@ public class PermissionShop extends JavaPlugin {
 
     }
 
-    public static PermissionShop getInstance() {
+    static PermissionShop getInstance() {
         if (instance == null) {
             instance = new PermissionShop();
         }
