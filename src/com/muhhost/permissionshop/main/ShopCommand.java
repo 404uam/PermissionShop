@@ -21,7 +21,7 @@ public class ShopCommand implements CommandExecutor {
         if(sender instanceof Player)
         {
             Player player = (Player)sender;
-            Inventory shop = Bukkit.createInventory(player,36,"Shop");
+            Inventory shop = Bukkit.createInventory(player,36,config.getString("name"));
 
             ItemStack trails = new ItemStack(Material.STRING);
             ItemMeta trailsMeta = trails.getItemMeta();
