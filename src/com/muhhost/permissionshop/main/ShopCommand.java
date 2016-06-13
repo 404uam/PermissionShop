@@ -12,11 +12,14 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-    public class ShopCommand implements CommandExecutor {
+import java.util.ArrayList;
+
+public class ShopCommand implements CommandExecutor {
 
     private PermissionShop pShop = PermissionShop.getInstance();
     private FileConfiguration config = pShop.getConfig();
     private Inventory shop;
+    private ArrayList<ShopItem> items;
 
     public boolean onCommand(CommandSender sender, Command command, String lbl, String[] args) {
 

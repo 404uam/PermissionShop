@@ -23,7 +23,15 @@ public class InventoryListener implements Listener{
 
 /*        if(category)
         {
-
+            load list of items in shop as referenced by clicked category.
+            if(list not loaded)
+            {
+                ERROR
+            }
+            else
+            {
+                Do stuff Maybe redraw gui.
+            }
         }
         else if(item)
         {
@@ -36,6 +44,14 @@ public class InventoryListener implements Listener{
 
             }
         }*/
+    }
+
+    private boolean loadList(String shop)
+    {
+        boolean isValid = false;
+
+
+        return isValid;
     }
 
 
