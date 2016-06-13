@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class PermissionShop extends JavaPlugin {
 
-    private static PermissionShop instance ;
+    private static PermissionShop instance;
     private FileConfiguration config = super.getConfig();
     private ArrayList categories;
 
