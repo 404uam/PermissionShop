@@ -36,8 +36,7 @@ public class ShopCommand implements CommandExecutor {
         return true;
     }
 
-    public Inventory getShop()
-    {return shop;}
+    public Inventory getShop() {return shop;}
 
     private void openGUI(Player player)
     {
@@ -49,6 +48,7 @@ public class ShopCommand implements CommandExecutor {
             if((Material.matchMaterial(config.getString("categories." + i + ".material")) == null))
             {
                 System.out.println("No such material");
+                Bukkit.getLogger().severe("No such material");
             }
             else{
 
