@@ -68,12 +68,12 @@ public class PermissionShop extends JavaPlugin {
 
         for (int j = 1; j<shopList.size(); j++)
         {
-            initializeShops(shopList.get(j).getName());
+            initializeShops(shopList.get(j).getName(),shopList.get(j));
         }
 
     }
 
-    private void initializeShops(String name)
+    private void initializeShops(String name,Inventory inv)
     {
         int i = 0;
 
@@ -82,7 +82,10 @@ public class PermissionShop extends JavaPlugin {
             String prefix = name + "." +i;
             ShopItem item = new ShopItem(config.getString(prefix+"name"),config.getString(prefix+"material"),config.getString(prefix+"command"),config.getInt(prefix+"position"),config.getDouble(prefix+"price"));
             i++;
+
+            inv.setItem(item.getPosition(),item.getItem());
         }
+
 
 
     }
