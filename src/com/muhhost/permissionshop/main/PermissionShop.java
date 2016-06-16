@@ -2,15 +2,9 @@ package com.muhhost.permissionshop.main;
 
 import com.muhhost.permissionshop.listeners.InventoryListener;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
@@ -25,7 +19,7 @@ public class PermissionShop extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         instance = this;
-        this.intilizeShops();
+        this.initializeShops();
         getServer().getPluginManager().registerEvents(new InventoryListener(),this);
         this.getCommand("shop").setExecutor(new ShopCommand());
     }
@@ -46,7 +40,7 @@ public class PermissionShop extends JavaPlugin {
         return config;
     }
 
-    private void intilizeShops()
+    private void initializeShops()
     {
         int i = 0;
         Queue <Inventory> nextShops = new PriorityQueue<>();
@@ -74,12 +68,12 @@ public class PermissionShop extends JavaPlugin {
 
         for (int j = 1; j<shopList.size(); j++)
         {
-
+            initializeShops(shopList.get(j).getName());
         }
 
     }
 
-    private void initilizeShops(String name)
+    private void initializeShops(String name)
     {
         int i = 0;
 
