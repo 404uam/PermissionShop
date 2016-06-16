@@ -48,13 +48,13 @@ public class ShopItem {
         item.setItemMeta(meta);
     }
 
-    public ShopItem(String name, String material, String nextShop, int position, boolean isCategory)
+    public ShopItem(String name, String material, String nextShop, int position)
     {
         this.name = name;
         this.material = material;
         this.nextShop = nextShop;
         this.position = position;
-        this.isCategory = isCategory;
+        this.isCategory = true;
 
         if(Material.matchMaterial(material) != null)
         {

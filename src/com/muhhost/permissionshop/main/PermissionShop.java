@@ -53,7 +53,7 @@ public class PermissionShop extends JavaPlugin {
 
         while(config.get("categories." + i) != null)
         {
-            ShopItem temp = new ShopItem(config.getString("categories." + i + "name"), config.getString("categories." + i + "material"),null,config.getInt("categoris." + i + "position"),0.0,true);
+            ShopItem temp = new ShopItem(config.getString("categories." + i + "name"),config.getString("categories." + i + "material"), config.getString("categoris."+i+"shop"), config.getInt("categories." + i + "position"));
             categoryPage.setItem(temp.getPosition(),temp.getItem());
             i++;
         }
