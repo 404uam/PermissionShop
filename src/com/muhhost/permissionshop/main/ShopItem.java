@@ -1,6 +1,8 @@
 package com.muhhost.permissionshop.main;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class ShopItem {
     private String name;
@@ -8,26 +10,42 @@ public class ShopItem {
     private String command;
     private int position;
     private double price;
+    private ItemStack item;
+    private boolean isCategory;
 
     public ShopItem()
     {
-
     }
-    public ShopItem(String name,String material, String command, int position, double price)
+    public ShopItem(String name,String material, String command, int position, double price, boolean isCategory)
     {
         this.name = name;
         this.material = material;
         this.command = command;
         this.position = position;
         this.price = price;
+        this.isCategory = isCategory;
+
+        if(Material.matchMaterial(material) != null)
+        {
+            item = new ItemStack(Material.matchMaterial(material));
+            ItemMeta meta = item.getItemMeta();
+            meta.setDisplayName(name);
+            item.setItemMeta(meta);
+        }
     }
-    public  ShopItem(String name, Material material, String command, int position, double price)
+    public  ShopItem(String name, Material material, String command, int position, double price, boolean isCategory)
     {
         this.name = name;
         this.material = material.name();
         this.command = command;
         this.position = position;
         this.price = price;
+        this.isCategory = isCategory;
+
+        item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        item.setItemMeta(meta);
     }
 
     public String getName() {
@@ -69,4 +87,9 @@ public class ShopItem {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public ItemStack getItem() { return item; }
+
+    public boolean isCategory() { return isCategory; }
+
 }

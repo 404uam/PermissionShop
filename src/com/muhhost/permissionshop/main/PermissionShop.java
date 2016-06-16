@@ -49,21 +49,11 @@ public class PermissionShop extends JavaPlugin {
         int i = 0;
 
         Inventory shop = Bukkit.createInventory(null,36,config.getString("inventoryName"));
+
         while(config.get("categories." + i) != null)
         {
-            if((Material.matchMaterial(config.getString("categories." + i + ".material")) == null))
-            {
-                System.out.println("No such material");
-            }
-            else{
-
-                ItemStack temp = new ItemStack(Material.matchMaterial(config.getString("categories." + i + ".material")));
-                ItemMeta tempMeta = temp.getItemMeta();
-                tempMeta.setDisplayName(config.getString("categories." + i + ".name"));
-                temp.setItemMeta(tempMeta);
-
-                shop.setItem(config.getInt("categories."+i+".position"),temp);
-            }
+            ShopItem temp = new ShopItem(config.getString("categories." + i + "name"), config.getString("categories." + i + "material"),null,config.getInt("categoris." + i + "position"),0.0,true);
+            shop.setItem(temp.getPosition(),temp.getItem());
             i++;
         }
 
