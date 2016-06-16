@@ -112,4 +112,7 @@ public class ShopItem {
 
     public boolean isCategory() { return isCategory; }
 
+    public String getNextShop() {
+        return nextShop;
+    }
 }
