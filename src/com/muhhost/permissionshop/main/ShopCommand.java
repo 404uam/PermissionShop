@@ -26,8 +26,9 @@ public class ShopCommand implements CommandExecutor {
         if(sender instanceof Player)
         {
             Player player = (Player)sender;
-
-            openGUI(player);
+            //pShop.initializeShops();
+            //openGUI(player);
+           // player.openInventory(pShop.getShopList().get(0));
         }
         else
             Bukkit.getLogger().info("Command can only be activated by a player!");
@@ -51,6 +52,10 @@ public class ShopCommand implements CommandExecutor {
                 Bukkit.getLogger().severe("No such material");
             }
             else{
+                String categoryName = config.getString("categories." + i + ".name");
+                String categoryMaterial = config.getString("categories." + i + ".material");
+
+                ShopItem item = new ShopItem(categoryName,categoryMaterial,"trails",6);
 
                 ItemStack temp = new ItemStack(Material.matchMaterial(config.getString("categories." + i + ".material")));
                 ItemMeta tempMeta = temp.getItemMeta();

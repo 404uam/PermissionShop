@@ -13,10 +13,11 @@ public class PermissionShop extends JavaPlugin {
 
     private static PermissionShop instance;
     private FileConfiguration config = super.getConfig();
-    private ArrayList <Inventory> shopList;
+    private ArrayList <Inventory> shopList = new ArrayList<Inventory>();
 
 
     public void onEnable() {
+        //config = super.getConfig();
         saveDefaultConfig();
         instance = this;
         this.initializeShops();
@@ -40,16 +41,16 @@ public class PermissionShop extends JavaPlugin {
         return config;
     }
 
-    private void initializeShops()
+    public void initializeShops()
     {
         int i = 0;
-        Queue <Inventory> nextShops = new PriorityQueue<>();
-
+        Queue <Inventory> nextShops = new LinkedList<Inventory>();
         Inventory categoryPage = Bukkit.createInventory(null,36,config.getString("inventoryName"));
 
         while(config.get("categories." + i) != null)
         {
-            ShopItem temp = new ShopItem(config.getString("categories." + i + "name"),config.getString("categories." + i + "material"), config.getString("categoris."+i+"shop"), config.getInt("categories." + i + "position"));
+            System.out.println(config.getString("categories." + i + ".name") + "\n" + config.getString("categories." + i + ".material")+ "\n" +config.getString("categories."+i+".shop"));
+            ShopItem temp = new ShopItem(config.getString("categories." + i + ".name"),config.getString("categories." + i + ".material"),config.getString("categories."+i+".shop"), config.getInt("categories." + i + ".position"));
             categoryPage.setItem(temp.getPosition(),temp.getItem());
             i++;
             shopList.add(categoryPage);
@@ -85,8 +86,7 @@ public class PermissionShop extends JavaPlugin {
 
             inv.setItem(item.getPosition(),item.getItem());
         }
-
-
-
     }
+
+    public ArrayList<Inventory> getShopList() { return shopList; }
 }
