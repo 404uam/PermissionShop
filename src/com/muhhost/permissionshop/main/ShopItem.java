@@ -1,5 +1,6 @@
 package com.muhhost.permissionshop.main;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -8,6 +9,7 @@ public class ShopItem {
     private String name;
     private String material;
     private String command;
+    private String nextShop;
     private int position;
     private double price;
     private ItemStack item;
@@ -16,14 +18,13 @@ public class ShopItem {
     public ShopItem()
     {
     }
-    public ShopItem(String name,String material, String command, int position, double price, boolean isCategory)
+    public ShopItem(String name,String material, String command, int position, double price)
     {
         this.name = name;
         this.material = material;
         this.command = command;
         this.position = position;
         this.price = price;
-        this.isCategory = isCategory;
 
         if(Material.matchMaterial(material) != null)
         {
@@ -33,14 +34,13 @@ public class ShopItem {
             item.setItemMeta(meta);
         }
     }
-    public  ShopItem(String name, Material material, String command, int position, double price, boolean isCategory)
+    public  ShopItem(String name, Material material, String command, int position, double price)
     {
         this.name = name;
         this.material = material.name();
         this.command = command;
         this.position = position;
         this.price = price;
-        this.isCategory = isCategory;
 
         item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
@@ -48,6 +48,26 @@ public class ShopItem {
         item.setItemMeta(meta);
     }
 
+    public ShopItem(String name, String material, String nextShop, int position, boolean isCategory)
+    {
+        this.name = name;
+        this.material = material;
+        this.nextShop = nextShop;
+        this.position = position;
+        this.isCategory = isCategory;
+
+        if(Material.matchMaterial(material) != null)
+        {
+            item = new ItemStack(Material.matchMaterial(material));
+            ItemMeta meta = item.getItemMeta();
+            meta.setDisplayName(name);
+            item.setItemMeta(meta);
+        }
+        else
+        {
+            Bukkit.getLogger().severe("Material not matched");
+        }
+    }
     public String getName() {
         return name;
     }

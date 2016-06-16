@@ -18,12 +18,13 @@ public class PermissionShop extends JavaPlugin {
 
     private static PermissionShop instance;
     private FileConfiguration config = super.getConfig();
-    private ArrayList categories;
+    private ArrayList <Inventory> shopList;
 
 
     public void onEnable() {
         saveDefaultConfig();
         instance = this;
+        this.intilizeShops();
         getServer().getPluginManager().registerEvents(new InventoryListener(),this);
         this.getCommand("shop").setExecutor(new ShopCommand());
     }
@@ -48,14 +49,20 @@ public class PermissionShop extends JavaPlugin {
     {
         int i = 0;
 
-        Inventory shop = Bukkit.createInventory(null,36,config.getString("inventoryName"));
+        Inventory categoryPage = Bukkit.createInventory(null,36,config.getString("inventoryName"));
 
         while(config.get("categories." + i) != null)
         {
             ShopItem temp = new ShopItem(config.getString("categories." + i + "name"), config.getString("categories." + i + "material"),null,config.getInt("categoris." + i + "position"),0.0,true);
-            shop.setItem(temp.getPosition(),temp.getItem());
+            categoryPage.setItem(temp.getPosition(),temp.getItem());
             i++;
         }
+
+        shopList.add(categoryPage);
+
+
+
+
 
     }
 
