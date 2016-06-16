@@ -54,12 +54,14 @@ public class PermissionShop extends JavaPlugin {
             categoryPage.setItem(temp.getPosition(),temp.getItem());
             i++;
             shopList.add(categoryPage);
+
             if(temp.getNextShop() != null || !temp.getNextShop().equals(" ") || !temp.getNextShop().equals(""))
             {
                 Inventory nextShop = Bukkit.createInventory(null, InventoryType.CHEST,temp.getNextShop());
                 shopList.add(nextShop);
                 nextShops.add(nextShop);
             }
+
         }
 
         while(nextShops.peek() != null)
@@ -81,7 +83,7 @@ public class PermissionShop extends JavaPlugin {
         while(config.get(name + "." + i) != null)
         {
             String prefix = name + "." +i;
-            ShopItem item = new ShopItem(config.getString(prefix+"name"),config.getString(prefix+"material"),config.getString(prefix+"command"),config.getInt(prefix+"position"),config.getDouble(prefix+"price"));
+            ShopItem item = new ShopItem(config.getString(prefix+".name"),config.getString(prefix+".material"),config.getString(prefix+".command"),config.getInt(prefix+".position"),config.getDouble(prefix+".price"));
             i++;
 
             inv.setItem(item.getPosition(),item.getItem());
