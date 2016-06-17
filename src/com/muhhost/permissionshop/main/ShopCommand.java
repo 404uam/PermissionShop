@@ -26,9 +26,7 @@ public class ShopCommand implements CommandExecutor {
         if(sender instanceof Player)
         {
             Player player = (Player)sender;
-            //pShop.initializeShops();
-            //openGUI(player);
-           // player.openInventory(pShop.getShopList().get(0));
+            player.openInventory(pShop.getShopList().get(pShop.getShopList().size()-1));
         }
         else
             Bukkit.getLogger().info("Command can only be activated by a player!");

@@ -19,7 +19,7 @@ public class InventoryListener implements Listener{
 
         click.setCancelled(true);
 
-        click.getCurrentItem().getItemMeta().getDisplayName();
+
 
 /*        if(category)
         {
