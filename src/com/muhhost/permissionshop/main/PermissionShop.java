@@ -41,28 +41,31 @@ public class PermissionShop extends JavaPlugin {
         return config;
     }
 
-    public void initializeShops()
+    private void initializeShops()
     {
         int i = 0;
         Queue <Inventory> nextShops = new LinkedList<Inventory>();
+        Hashtable listOfNames = new Hashtable();
         Inventory categoryPage = Bukkit.createInventory(null,36,config.getString("inventoryName"));
 
         while(config.get("categories." + i) != null)
         {
-            System.out.println(config.getString("categories." + i + ".name") + "\n" + config.getString("categories." + i + ".material")+ "\n" +config.getString("categories."+i+".shop"));
             ShopItem temp = new ShopItem(config.getString("categories." + i + ".name"),config.getString("categories." + i + ".material"),config.getString("categories."+i+".shop"), config.getInt("categories." + i + ".position"));
             categoryPage.setItem(temp.getPosition(),temp.getItem());
             i++;
-            shopList.add(categoryPage);
 
             if(temp.getNextShop() != null || !temp.getNextShop().equals(" ") || !temp.getNextShop().equals(""))
             {
                 Inventory nextShop = Bukkit.createInventory(null, InventoryType.CHEST,temp.getNextShop());
-                shopList.add(nextShop);
-                nextShops.add(nextShop);
+                if(!listOfNames.containsValue(temp.getNextShop()))
+                {
+                    shopList.add(nextShop);
+                    listOfNames.put(temp.getNextShop(),temp.getNextShop());
+                }
             }
 
         }
+        shopList.add(categoryPage);
 
         while(nextShops.peek() != null)
         {
