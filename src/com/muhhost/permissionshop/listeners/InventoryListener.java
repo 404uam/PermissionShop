@@ -19,6 +19,17 @@ public class InventoryListener implements Listener{
 
         click.setCancelled(true);
 
+        String shop = click.getInventory().getName();
+        int itemClicked = click.getSlot();
+
+        if(pShop.getListOfShops().contains(shop))
+        {
+            if (pShop.getListOfShops().get(itemClicked) != null)
+            {
+
+            }
+        }
+
 
 
 /*        if(category)

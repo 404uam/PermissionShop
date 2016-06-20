@@ -14,6 +14,8 @@ public class PermissionShop extends JavaPlugin {
     private static PermissionShop instance;
     private FileConfiguration config = super.getConfig();
     private ArrayList <Inventory> shopList = new ArrayList<Inventory>();
+    private ArrayList <Shop> listOfShops = new ArrayList<>();
+
 
 
     public void onEnable() {
@@ -41,6 +43,9 @@ public class PermissionShop extends JavaPlugin {
         return config;
     }
 
+    public ArrayList<Shop> getListOfShops() {
+        return listOfShops;
+    }
     private void initializeShops()
     {
         int i = 0;
