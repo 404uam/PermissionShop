@@ -1,6 +1,7 @@
 package com.muhhost.permissionshop.listeners;
 
 import com.muhhost.permissionshop.main.PermissionShop;
+import com.muhhost.permissionshop.main.Shop;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -16,17 +17,21 @@ public class InventoryListener implements Listener{
     public void onInventoryClick(InventoryClickEvent click)
     {
         Player player = (Player)click.getWhoClicked();
+        String shopName = click.getInventory().getName();
+        int itemClicked = click.getSlot();
 
         click.setCancelled(true);
 
-        String shop = click.getInventory().getName();
-        int itemClicked = click.getSlot();
 
-        if(pShop.getListOfShops().contains(shop))
+        if(pShop.getListOfShops().contains(shopName))
         {
-            if (pShop.getListOfShops().get(itemClicked) != null)
+            try {
+                Shop shop = pShop.getListOfShops().get(pShop.getListOfShops().indexOf(shopName));
+            }
+            catch (NullPointerException e)
             {
-
+                e.printStackTrace();
+                System.out.println("Shop not found for some reason");
             }
         }
 

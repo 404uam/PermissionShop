@@ -46,12 +46,14 @@ public class PermissionShop extends JavaPlugin {
     public ArrayList<Shop> getListOfShops() {
         return listOfShops;
     }
+
     private void initializeShops()
     {
         int i = 0;
         Queue <Inventory> nextShops = new LinkedList<Inventory>();
         Hashtable listOfNames = new Hashtable();
         Inventory categoryPage = Bukkit.createInventory(null,36,config.getString("inventoryName"));
+        Shop page = new Shop(config.getString("inventoryName"));
 
         while(config.get("categories." + i) != null)
         {
@@ -59,24 +61,30 @@ public class PermissionShop extends JavaPlugin {
 
             ShopItem temp = new ShopItem(config.getString(prefix + ".name"),config.getString(prefix + ".material"),config.getString(prefix+".shop"), config.getInt(prefix+ ".position"));
             categoryPage.setItem(temp.getPosition(),temp.getItem());
+            page.add(temp.getPosition(),temp);
             i++;
 
             if(temp.getNextShop() != null || !temp.getNextShop().equals(" ") || !temp.getNextShop().equals(""))
             {
                 Inventory nextShop = Bukkit.createInventory(null, InventoryType.CHEST,temp.getNextShop());
+                Shop tempShop = new Shop(nextShop.getName());
+
                 if(!listOfNames.containsValue(temp.getNextShop()))
                 {
                     shopList.add(nextShop);
+                    listOfShops.add(tempShop);
                     listOfNames.put(temp.getNextShop(),temp.getNextShop());
                 }
             }
 
         }
         shopList.add(categoryPage);
+        listOfShops.add(page);
 
         while(nextShops.peek() != null)
         {
-            shopList.add(nextShops.poll());
+            Inventory nextShop = nextShops.poll();
+            shopList.add(nextShop);
         }
 
         for (int j = 1; j<shopList.size(); j++)

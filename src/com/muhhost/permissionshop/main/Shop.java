@@ -3,12 +3,10 @@ package com.muhhost.permissionshop.main;
 
 import java.util.ArrayList;
 
-/**
- * Created by Louis on 6/20/2016.
- */
 public class Shop {
 
     private ArrayList<ShopItem> items;
+    private ShopItem[] test = new ShopItem[36];
     private String name;
 
     public Shop (String name)
@@ -19,7 +17,7 @@ public class Shop {
 
     public void add(int index,ShopItem item)
     {
-        items.add(index,item);
+        test[index] = item;
     }
 
     public ShopItem get(int index)

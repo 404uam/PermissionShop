@@ -35,7 +35,7 @@ public class ShopCommand implements CommandExecutor {
         return true;
     }
 
-    public Inventory getShop() {return shop;}
+/*    public Inventory getShop() {return shop;}
 
     private void openGUI(Player player)
     {
@@ -65,5 +65,5 @@ public class ShopCommand implements CommandExecutor {
             i++;
         }
         player.openInventory(shop);
-    }
+    }*/
 }
