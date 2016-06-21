@@ -23,17 +23,28 @@ public class InventoryListener implements Listener{
         click.setCancelled(true);
 
 
-        if(pShop.getListOfShops().contains(shopName))
-        {
+//        if(pShop.getListOfShops().contains(shopName))
+//        {
+//
             try {
                 Shop shop = pShop.getListOfShops().get(pShop.getListOfShops().indexOf(shopName));
+
+                if(shop.get(itemClicked).isCategory())
+                {
+                    System.out.println("In Category");
+                    //Gets the INVENTORY/SHOP from SHOP LIST
+                    int indexOfNextShop = pShop.getListOfShops().indexOf(shop.get(itemClicked).getNextShop());
+                    //Opens the inventory
+                    player.openInventory(pShop.getShopList().get(indexOfNextShop));         //HERE Is where tuples can come to use.
+
+                }
             }
             catch (NullPointerException e)
             {
                 e.printStackTrace();
                 System.out.println("Shop not found for some reason");
             }
-        }
+//        }
 
 
 

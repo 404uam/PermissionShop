@@ -87,14 +87,14 @@ public class PermissionShop extends JavaPlugin {
             shopList.add(nextShop);
         }
 
-        for (int j = 1; j<shopList.size(); j++)
+        for (int j = shopList.size() - 1 ; j >= 0; j--)
         {
-            initializeShops(shopList.get(j).getName(),shopList.get(j));
+            initializeShops(shopList.get(j).getTitle(),shopList.get(j),listOfShops.get(j));
         }
 
     }
 
-    private void initializeShops(String name,Inventory inv)
+    private void initializeShops(String name,Inventory inv,Shop shop)
     {
         int i = 0;
 
@@ -105,6 +105,7 @@ public class PermissionShop extends JavaPlugin {
             i++;
 
             inv.setItem(item.getPosition(),item.getItem());
+            shop.add(item.getPosition(),item);
         }
 
     }
