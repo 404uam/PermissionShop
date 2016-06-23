@@ -47,6 +47,22 @@ public class PermissionShop extends JavaPlugin {
         return listOfShops;
     }
 
+    public ArrayList<Inventory> getShopList() { return shopList; }
+
+    public int indexOf(String name)
+    {
+        int index = -1;
+
+        for(int i =  0; i < listOfShops.size(); i++)
+        {
+            if(name.equals(listOfShops.get(i).getName()))
+            {
+                index = i;
+            }
+        }
+
+        return index;
+    }
     private void initializeShops()
     {
         int i = 0;
@@ -110,5 +126,4 @@ public class PermissionShop extends JavaPlugin {
 
     }
 
-    public ArrayList<Inventory> getShopList() { return shopList; }
 }

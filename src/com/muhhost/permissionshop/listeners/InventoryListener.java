@@ -22,29 +22,30 @@ public class InventoryListener implements Listener{
 
         click.setCancelled(true);
 
+        try {
+            Shop shop = pShop.getListOfShops().get(pShop.indexOf(shopName));
 
-//        if(pShop.getListOfShops().contains(shopName))
-//        {
-//
-            try {
-                Shop shop = pShop.getListOfShops().get(pShop.getListOfShops().indexOf(shopName));
-
-                if(shop.get(itemClicked).isCategory())
-                {
-                    System.out.println("In Category");
-                    //Gets the INVENTORY/SHOP from SHOP LIST
-                    int indexOfNextShop = pShop.getListOfShops().indexOf(shop.get(itemClicked).getNextShop());
-                    //Opens the inventory
-                    player.openInventory(pShop.getShopList().get(indexOfNextShop));         //HERE Is where tuples can come to use.
-
+            if(shop.get(itemClicked).isCategory())
+            {
+                System.out.println("In Category");
+                //Gets the INVENTORY/SHOP from SHOP LIST
+                int indexOfNextShop = pShop.indexOf(shop.get(itemClicked).getNextShop());
+                //Opens the inventory
+                player.openInventory(pShop.getShopList().get(indexOfNextShop));         //HERE Is where tuples can come to use.
                 }
             }
-            catch (NullPointerException e)
-            {
-                e.printStackTrace();
-                System.out.println("Shop not found for some reason");
-            }
-//        }
+        catch (NullPointerException e)
+        {
+            e.printStackTrace();
+            System.out.println("Shop not found for some reason");
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println(pShop.getListOfShops().indexOf(shopName));
+            System.out.println(pShop.indexOf(shopName));
+            System.out.print("wat");
+        }
+
 
 
 

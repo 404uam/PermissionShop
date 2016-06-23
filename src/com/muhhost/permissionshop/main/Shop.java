@@ -25,7 +25,10 @@ public class Shop {
         return items.get(index);
     }
 
-    @Override
+    public String getName() {
+        return name;
+    }
+
     public String toString() {
         return name;
     }
