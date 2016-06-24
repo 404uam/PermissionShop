@@ -22,7 +22,7 @@ public class Shop {
 
     public ShopItem get(int index)
     {
-        return items.get(index);
+        return test[index];
     }
 
     public String getName() {
