@@ -1,0 +1,15 @@
+name: PermissionShop
+main: com.muhhost.permissionshop.main.PermissionShop
+author: SirTak
+version: 1.0
+depend: [Vault]
+commands:
+     pshop:
+        description: Opens up the shop menu
+        usage: /shop
+        permission: permissionshop.open
+permissions:
+  permissionshop.*:
+    description: Gives access to all permissions
+    children:
+      permissionshop.open: true
