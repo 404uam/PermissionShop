@@ -1,8 +1,0 @@
-name: PermissionShop
-main: com.muhhost.permissionshop.main.PermissionShop
-author: SirTak
-version: 1.0
-commands:
-     shop:
-        description: Opens up the shop menu
-        usage: /shop
