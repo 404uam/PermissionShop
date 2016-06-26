@@ -34,36 +34,4 @@ public class ShopCommand implements CommandExecutor {
 
         return true;
     }
-
-/*    public Inventory getShop() {return shop;}
-
-    private void openGUI(Player player)
-    {
-        shop = Bukkit.createInventory(player,36,config.getString("inventoryName"));
-        int i = 0;
-
-        while(config.get("categories." + i) != null)
-        {
-            if((Material.matchMaterial(config.getString("categories." + i + ".material")) == null))
-            {
-                System.out.println("No such material");
-                Bukkit.getLogger().severe("No such material");
-            }
-            else{
-                String categoryName = config.getString("categories." + i + ".name");
-                String categoryMaterial = config.getString("categories." + i + ".material");
-
-                ShopItem item = new ShopItem(categoryName,categoryMaterial,"trails",6);
-
-                ItemStack temp = new ItemStack(Material.matchMaterial(config.getString("categories." + i + ".material")));
-                ItemMeta tempMeta = temp.getItemMeta();
-                tempMeta.setDisplayName(config.getString("categories." + i + ".name"));
-                temp.setItemMeta(tempMeta);
-
-                shop.setItem(config.getInt("categories."+i+".position"),temp);
-            }
-            i++;
-        }
-        player.openInventory(shop);
-    }*/
 }
