@@ -36,7 +36,9 @@ public class InventoryListener implements Listener{
                 }
             else
             {
-                Bukkit.dispatchCommand(player,currentShop.get(itemClicked).getCommand());
+                String s = currentShop.get(itemClicked).getCommand().substring(1,currentShop.get(itemClicked).getCommand().length()-1);
+                System.out.println(currentShop.get(itemClicked).getCommand().replace('[','\0').replace(']','\0'));
+                Bukkit.dispatchCommand(player,s);
             }
             }
         catch (NullPointerException e)

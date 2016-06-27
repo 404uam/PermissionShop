@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
@@ -34,7 +35,7 @@ public class PermissionShop extends JavaPlugin {
     }
 
     public void onDisable() {
-
+        log.info(String.format("[%s] Disabled Version %s", getDescription().getName(), getDescription().getVersion()));
     }
 
     public static PermissionShop getInstance() {
@@ -132,4 +133,29 @@ public class PermissionShop extends JavaPlugin {
 
     }
 
+    private boolean setupEconomy(){
+        boolean isSetup = true;
+
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if(rsp == null)
+        {
+            isSetup = false;
+        }
+        econ = rsp.getProvider();
+
+        return (isSetup && econ != null);
+    }
+
+    private boolean setupChat(){
+        RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
+        chat = rsp.getProvider();
+
+        return chat != null;
+    }
+
+    private boolean setupPermissions() {
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        perms = rsp.getProvider();
+        return perms != null;
+    }
 }
