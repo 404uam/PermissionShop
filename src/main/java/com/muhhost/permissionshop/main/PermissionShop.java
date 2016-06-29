@@ -27,6 +27,8 @@ public class PermissionShop extends JavaPlugin {
 
 
     public void onEnable() {
+        setupEconomy();
+        setupPermissions();
         saveDefaultConfig();
         instance = this;
         this.initializeShops();

@@ -4,7 +4,7 @@
 #         SirTak         #
 ##########################
 
-#Name of the shop opened
+#Prefix of the shop name up top
 inventoryName: "Permission Shop"
 
 #Prefix for messages in game.
@@ -29,7 +29,7 @@ trails:
     name:
     position: 0
     material: SAND
-    price:  10
+    price:  10.0
     command:
       - say Hello
 
