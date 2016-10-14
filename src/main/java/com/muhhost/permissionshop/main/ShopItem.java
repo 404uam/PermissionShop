@@ -18,6 +18,7 @@ public class ShopItem {
     public ShopItem()
     {
     }
+
     public ShopItem(String name,String material, String command, int position, double price)
     {
         this.name = name;
