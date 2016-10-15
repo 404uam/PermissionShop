@@ -10,6 +10,7 @@ public class ShopItem {
     private String material;
     private String command;
     private String nextShop;
+    private String prevShop;
     private int position;
     private double price;
     private ItemStack item;
@@ -35,24 +36,10 @@ public class ShopItem {
             item.setItemMeta(meta);
         }
     }
-    public  ShopItem(String name, Material material, String command, int position, double price)
-    {
-        this.name = name;
-        this.material = material.name();
-        this.command = command;
-        this.position = position;
-        this.price = price;
-
-        item = new ItemStack(material);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(name);
-        item.setItemMeta(meta);
-    }
-
     public ShopItem(String name, String material, String nextShop, int position)
     {
         this.name = name;
-        this.material = material;
+        this.material = material.toUpperCase();
         this.nextShop = nextShop;
         this.position = position;
         this.isCategory = true;

@@ -80,7 +80,7 @@ public class PermissionShop extends JavaPlugin {
     {
         int i = 0;
         Queue <Inventory> nextShops = new LinkedList<Inventory>();
-        Hashtable listOfNames = new Hashtable();
+        ArrayList<String> listOfNames = new ArrayList<>();
         Inventory categoryPage = Bukkit.createInventory(null,36,config.getString("inventoryName"));
         Shop page = new Shop(config.getString("inventoryName"));
 
@@ -98,11 +98,12 @@ public class PermissionShop extends JavaPlugin {
                 Inventory nextShop = Bukkit.createInventory(null, InventoryType.CHEST,temp.getNextShop());
                 Shop tempShop = new Shop(nextShop.getName());
 
-                if(!listOfNames.containsValue(temp.getNextShop()))
+                if(!listOfNames.contains(temp.getNextShop()))
                 {
                     shopList.add(nextShop);
                     listOfShops.add(tempShop);
-                    listOfNames.put(temp.getNextShop(),temp.getNextShop());
+
+                    listOfNames.add(temp.getNextShop());
                 }
             }
 
