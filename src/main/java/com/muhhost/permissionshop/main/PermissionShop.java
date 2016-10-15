@@ -27,7 +27,11 @@ public class PermissionShop extends JavaPlugin {
 
 
     public void onEnable() {
-        setupEconomy();
+        if (!setupEconomy() ) {
+            log.severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
         setupPermissions();
         saveDefaultConfig();
         instance = this;
@@ -137,6 +141,10 @@ public class PermissionShop extends JavaPlugin {
 
     private boolean setupEconomy(){
         boolean isSetup = true;
+
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
 
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if(rsp == null)
